@@ -3,8 +3,7 @@ import {
   getAllUsers,
   userLogin,
   userLogout,
-  userSignup,
-  verifyUser,
+  userSignup
 } from "../controllers/user-controller.js";
 import {
   loginValidator,
@@ -16,9 +15,8 @@ import { verifyToken } from "../utils/token-manager.js";
 const userRoutes = Router();
 
 userRoutes.get("/", getAllUsers);
-userRoutes.post("/signup", validate(signupValidator), userSignup);
-userRoutes.post("/login", validate(loginValidator), userLogin);
-userRoutes.get("/auth-status", verifyToken, verifyUser);
-userRoutes.get("/logout", verifyToken, userLogout);
+userRoutes.post("/signup", userSignup);
+userRoutes.post("/login", userLogin);
+userRoutes.get("/logout", userLogout);
 
 export default userRoutes;
